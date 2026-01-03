@@ -22,22 +22,6 @@ export async function generateMetadata({
   if (!first || !CATEGORIES.includes(first as Category)) {
     return {
       title: "NoteHub - Not Found",
-      description: "The requested category does not exist.",
-      openGraph: {
-        title: "NoteHub - Not Found",
-        description: "The requested category does not exist.",
-        url: "https://08-zustand-phi-three.vercel.app/notes/All",
-        siteName: "NoteHub",
-        images: [
-          {
-            url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-            width: 1200,
-            height: 630,
-            alt: "Notehub",
-          },
-        ],
-        type: "website",
-      },
     };
   }
 
@@ -48,35 +32,23 @@ export async function generateMetadata({
     description: `Browse notes filtered by category: ${tag}.`,
     openGraph: {
       title: `NoteHub - ${tag}`,
-      description: `Browse notes filtered by category: ${tag}.`,
-      url: `https://08-zustand-phi-three.vercel.app/notes/${tag}`,
-      siteName: "NoteHub",
-      images: [
-        {
-          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Notehub",
-        },
-      ],
-      type: "website",
+      url: `https://08-zustand-phi-three.vercel.app/notes/filter/${tag}`,
+      images: [{ url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg" }],
     },
   };
 }
 
-export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return CATEGORIES.map((c) => ({ slug: [c] }));
-}
 
 type Props = { params: Promise<{ slug?: string[] }> };
 
 export default async function Page({ params }: Props) {
   const { slug = [] } = await params;
 
-  const tag = slug[0] as Category | undefined;
-  if (!tag || !CATEGORIES.includes(tag)) notFound();
+  const firstParam = slug[0];
+  const tag = CATEGORIES.find(c => c.toLowerCase() === firstParam?.toLowerCase()) as Category;
+
+  if (!tag) notFound();
 
   const category: CategoryNoAll | undefined =
     tag === "All" ? undefined : (tag as CategoryNoAll);
@@ -93,6 +65,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <HydrationBoundary state={dehydrate(qc)}>
+      {}
       <NotesClient tag={category} />
     </HydrationBoundary>
   );
