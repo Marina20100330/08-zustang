@@ -1,11 +1,14 @@
+
+
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+
+import { Geist, Geist_Mono, Roboto } from "next/font/google"; 
 import "./globals.css";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
-const geistSans = Geist({
+const geistSans = Geist({ 
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
@@ -26,9 +29,10 @@ export const metadata: Metadata = {
   title: "NoteHub",
   description: "Write, organize, and store your notes with ease.",
   openGraph: {
-    title: `NoteHub`,
+    title: `NoteHub`, 
     description: "Write, organize, and store your notes with ease.",
-    url: `https://08-zustand-phi-three.vercel.app/`,
+    
+    url: `https://08-zustand-phi-three.vercel.app/`, 
     siteName: "NoteHub",
     images: [
       {
@@ -52,7 +56,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable}${geistSans.variable} ${geistMono.variable}`}
+       
+        className={`${roboto.variable} ${geistSans.variable} ${geistMono.variable}`} 
       >
         <TanStackProvider>
           <Header />

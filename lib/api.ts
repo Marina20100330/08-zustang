@@ -1,11 +1,14 @@
+// lib/api.ts
+
 import axios from "axios";
 import type { Note } from "../types/note"; 
 axios.defaults.baseURL = "https://notehub-api.goit.global";
 
+
 axios.defaults.headers.common["Authorization"] = 
   `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`;
 
-//
+
 if (
   process.env.NODE_ENV !== "production" &&
   !process.env.NEXT_PUBLIC_NOTEHUB_TOKEN
@@ -14,7 +17,6 @@ if (
     "NEXT_PUBLIC_NOTEHUB_TOKEN is missing! Requests will fail with 401 Unauthorized."
   );
 }
-
 const Tags = [
   "All", "Todo", "Work", "Personal", "Meeting", "Shopping",
 ] as const;
@@ -32,7 +34,7 @@ export const fetchNotes = async (
   page: number,
   perPage: number,
   search?: string,
-  tag?: string, 
+  tag?: string,
   sortBy?: SortBy
 ): Promise<FetchNotes> => {
   const params: Record<string, string | number> = {
@@ -62,7 +64,7 @@ export const fetchNoteById = async (id: string): Promise<Note> => {
 };
 
 export const deleteNote = async (id: string): Promise<Note> => {
-  
+
   const { data } = await axios.delete<Note>(`/notes/${id}`);
   return data;
 };
