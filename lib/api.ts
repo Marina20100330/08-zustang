@@ -3,7 +3,7 @@ import type { Note } from "../types/note";
 
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 axios.defaults.headers.common["Authorization"] =
-  `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`;
+  `Bearer ${process.env.IC_NOTEHUNEXT_PUBLB_TOKEN}`;
 
 if (
   process.env.NODE_ENV !== "production" &&

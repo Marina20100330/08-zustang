@@ -1,14 +1,13 @@
-// components/Header/Header.tsx
 "use client";
 
 import Link from "next/link";
 import css from "./Header.module.css";
-import TagsMenu from "@/components/TagsMenu/TagsMenu";
 
 export default function Header() {
   return (
     <header className={css.header}>
-      <Link href="/" aria-label="Home">
+      {}
+      <Link href="/" className={css.logo} aria-label="Home">
         NoteHub
       </Link>
 
@@ -18,8 +17,9 @@ export default function Header() {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <TagsMenu />
-          </li>{" "}
+            {}
+            <Link href="/notes/filter/all">Notes</Link>
+          </li>
         </ul>
       </nav>
     </header>
