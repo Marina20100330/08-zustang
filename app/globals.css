@@ -1,8 +1,7 @@
-/* ТЕМИ / ЗМІННІ */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  font-family: var(--font-roboto), sans-serif; /* підтягує Roboto з next/font */
+  font-family: var(--font-roboto), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,8 +50,7 @@ a {
   }
 }
 
-/* (опціонально) якщо футер має тінь/фіксовану висоту — невеликий відступ знизу у контенту */
 .notes-list,
 .app {
-  padding-bottom: 80px; /* при необхідності: висота футера + запас */
+  padding-bottom: 80px;
 }

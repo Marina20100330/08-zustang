@@ -78,7 +78,6 @@
   }
 }
 
-/* Каскад для затримки */
 .listItem:nth-child(1) {
   animation-delay: 0.05s;
 }
@@ -100,7 +99,7 @@
   background-color: #f70000;
   color: black;
 }
-/* Адаптивність */
+
 @media (max-width: 1024px) {
   .list {
     grid-template-columns: repeat(3, 1fr);

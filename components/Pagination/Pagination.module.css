@@ -1,10 +1,12 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
-  margin: 24px 0;
-  list-style: none;
+  margin: 40px 0;
   padding: 0;
+  list-style: none;
+  width: 100%;
 }
 
 .pagination li {
@@ -13,9 +15,9 @@
   cursor: pointer;
   min-width: 36px;
   height: 36px;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+  background-color: var(--background);
+  transition: all 0.2s ease;
+  overflow: hidden;
 }
 
 .pagination li a {
@@ -27,22 +29,30 @@
   text-decoration: none;
   color: orange;
   font-size: 14px;
+  font-weight: 500;
 }
 
-.pagination li:hover {
-  background-color: #e9ecef;
+.pagination li:hover:not(.active) {
+  background-color: #f8f9fa;
+  border-color: orange;
 }
 
-.pagination li.active:hover {
-  background-color: orange;
-}
-
-.active {
+.pagination li.active {
   background-color: orange;
   border-color: orange;
 }
 
-.active a {
-  color: #fff !important;
-  font-weight: 500;
+.pagination li.active a {
+  color: #ffffff !important;
+  cursor: default;
+}
+
+.pagination li.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination li.break {
+  border: none;
+  cursor: default;
 }
